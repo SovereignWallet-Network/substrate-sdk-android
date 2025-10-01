@@ -4,14 +4,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 apply from: '../maven-publish-helper.gradle'
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId 'io.github.nova-wallet'
-        }
-    }
-}
-
 android {
     compileSdkVersion rootProject.compileVersion
     defaultConfig {

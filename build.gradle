@@ -121,4 +121,4 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     args "-F", "$project.rootDir/**/src/main/**/*.kt"
 }
 
-apply from: "${rootDir}/scripts/publish-root.gradle"
+// apply from: "${rootDir}/scripts/publish-root.gradle"
