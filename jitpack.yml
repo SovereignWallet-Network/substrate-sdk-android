@@ -1,2 +1,2 @@
 before_install:
-  - yes | sdkmanager --uninstall "ndk-bundle" | sdkmanager --install "ndk;28.2.13676358"
+  ./jitpack.sh
