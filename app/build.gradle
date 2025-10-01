@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -14,10 +13,17 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.6'
+    }
 
     buildTypes {
         debug {
@@ -28,12 +34,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'jp.co.soramitsu.fearless_utils_android'
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':fearless-utils')
-    implementation androidDep
-    implementation constraintDep
-    implementation gsonDep
+    implementation "com.google.android.material:material:1.8.0"
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.activity:activity-compose:1.7.1'
+
+    implementation "androidx.compose.ui:ui:1.4.2"
+    implementation "androidx.compose.material:material:1.4.2"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.2"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.4.2"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.4.2"
 }

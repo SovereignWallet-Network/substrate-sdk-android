@@ -5,19 +5,17 @@ buildscript {
         versionCode = 1
 
         // SDK and tools
-        compileVersion = 28
-        minVersion = 21
-        targetVersion = 28
-
-        kotlinVersion = '1.4.31'
+        compileVersion = 33
+        minVersion = 24
+        targetVersion = 33
 
         supportVersion = '1.0.0'
         constraintVersion = '1.1.3'
 
         rxJavaVersion = '2.2.7'
-        coroutinesVersion = '1.4.2'
+        coroutinesVersion = '1.6.4'
 
-        gsonVersion = '2.8.2'
+        gsonVersion = '2.10.1'
 
         zXingVersion = '3.5.0'
 
@@ -29,7 +27,7 @@ buildscript {
 
         junitVersion = '4.12'
         mockitoVersion = '3.12.4'
-        wsVersion = '2.10'
+        wsVersion = '2.14'
         xxHashVersion = '1.7.1'
         svgVersion = '1.4'
 
@@ -39,6 +37,7 @@ buildscript {
 
         rxJavaDep = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
         coroutinesDep = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+        kotlinSerializationDep = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
 
         gsonDep = "com.google.code.gson:gson:$gsonVersion"
 
@@ -64,16 +63,19 @@ buildscript {
         coroutinesTestDep = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesVersion}"
     }
     repositories {
+        mavenCentral()
+        maven { url "https://artifactory.appodeal.com/appodeal" }
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:8.0.0'
         classpath 'org.mozilla.rust-android-gradle:plugin:0.9.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20"
         classpath 'io.github.gradle-nexus:publish-plugin:1.1.0'
     }
 }
@@ -83,12 +85,13 @@ apply plugin: 'io.github.gradle-nexus.publish-plugin'
 
 allprojects {
     repositories {
+        maven { url "https://artifactory.appodeal.com/appodeal" }
+        mavenCentral()
         google()
         jcenter()
         maven {
             url "https://jitpack.io"
         }
-        mavenCentral()
     }
 }
 

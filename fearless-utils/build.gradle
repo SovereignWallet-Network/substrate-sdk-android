@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 apply from: '../maven-publish-helper.gradle'
 
@@ -35,9 +34,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
+    ndkVersion "28.2.13676358"
 
     sourceSets {
         test {
@@ -51,6 +52,7 @@ android {
     kotlinOptions {
         freeCompilerArgs = ['-Xinline-classes']
     }
+    namespace 'jp.co.soramitsu.fearless_utils'
 }
 
 cargo {
@@ -94,6 +96,7 @@ dependencies {
     implementation xxHashDep
 
     implementation coroutinesDep
+    implementation kotlinSerializationDep
 
     testImplementation jUnitDep
     testImplementation mockitoDep

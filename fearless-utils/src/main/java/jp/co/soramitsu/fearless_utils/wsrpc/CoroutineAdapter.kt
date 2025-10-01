@@ -43,7 +43,8 @@ suspend fun SocketService.executeAsync(
 ) = suspendCancellableCoroutine<RpcResponse> { cont ->
     val cancellable =
         executeRequest(
-            request, deliveryType,
+            request,
+            deliveryType,
             object : SocketService.ResponseListener<RpcResponse> {
                 override fun onNext(response: RpcResponse) {
                     cont.resume(response)
@@ -70,7 +71,7 @@ fun SocketService.subscriptionFlow(
                 request,
                 object : SocketService.ResponseListener<SubscriptionChange> {
                     override fun onNext(response: SubscriptionChange) {
-                        offer(response)
+                        trySend(response)
                     }
 
                     override fun onError(throwable: Throwable) {
@@ -87,7 +88,7 @@ fun SocketService.subscriptionFlow(
 
 fun SocketService.networkStateFlow(): Flow<State> = callbackFlow {
     val observer: StateObserver = { state: State ->
-        offer(state)
+        trySend(state)
     }
 
     addStateObserver(observer)
