@@ -1,2 +1,3 @@
 before_install:
-  ./jitpack.sh
+- chmod +x jitpack.sh
+- ./jitpack.sh
