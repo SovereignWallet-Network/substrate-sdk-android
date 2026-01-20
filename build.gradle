@@ -5,9 +5,9 @@ buildscript {
         versionCode = 1
 
         // SDK and tools
-        compileVersion = 33
+        compileVersion = 35
         minVersion = 24
-        targetVersion = 33
+        targetVersion = 35
 
         supportVersion = '1.0.0'
         constraintVersion = '1.1.3'
@@ -21,7 +21,7 @@ buildscript {
 
         spoungyCastleVersion = '1.58.0.0'
         ed25519Version = '0.3.0'
-        bip39version = '2019.01.27'
+        bip39version = '2022.01.17'
         web3jVersion = '4.8.0'
         apacheXercesVersion = '2.9.0'
 
@@ -47,8 +47,11 @@ buildscript {
         web3jDep = "org.web3j:crypto:$web3jVersion"
         apacheXercesDep = "org.eclipse.birt.runtime.3_7_1:org.apache.xerces:$apacheXercesVersion"
 
-        bip39Dep = "io.github.novacrypto:BIP39:$bip39version"
-        secureStringDep = "io.github.novacrypto:securestring:$bip39version@jar"
+        bip39Dep = "com.github.NovaCrypto:BIP39:0e7fa95f80"
+        toRuntimeDep = "com.github.NovaCrypto:ToRuntime:c3ae3080eb"
+
+        secureStringDep = "io.github.novacrypto:SecureString:$bip39version@jar"
+        sha256Dep = "io.github.novacrypto:SHA256:$bip39version@jar"
         wsDep = "com.neovisionaries:nv-websocket-client:$wsVersion"
         xxHashDep = "org.lz4:lz4-java:$xxHashVersion"
         svgDep = "com.caverock:androidsvg-aar:$svgVersion"
@@ -64,7 +67,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        maven { url "https://artifactory.appodeal.com/appodeal" }
+        maven { url "https://repo1.maven.org/maven2" }
         google()
         jcenter()
         maven { url "https://jitpack.io" }
@@ -85,7 +88,7 @@ apply plugin: 'io.github.gradle-nexus.publish-plugin'
 
 allprojects {
     repositories {
-        maven { url "https://artifactory.appodeal.com/appodeal" }
+        maven { url "https://repo1.maven.org/maven2" }
         mavenCentral()
         google()
         jcenter()

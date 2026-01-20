@@ -78,8 +78,12 @@ dependencies {
     implementation bouncyCastleDep
     implementation ed25519Dep
     implementation svgDep
-    implementation bip39Dep
+    implementation(bip39Dep){
+        exclude group: 'io.github.novacrypto', module: 'ToRuntime'
+    }
+    implementation toRuntimeDep
     implementation secureStringDep
+    implementation sha256Dep
     implementation wsDep
     implementation gsonDep
     implementation web3jDep
