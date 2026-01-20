@@ -5,9 +5,9 @@ buildscript {
         versionCode = 1
 
         // SDK and tools
-        compileVersion = 35
+        compileVersion = 33
         minVersion = 24
-        targetVersion = 35
+        targetVersion = 33
 
         supportVersion = '1.0.0'
         constraintVersion = '1.1.3'
